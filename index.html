@@ -4,207 +4,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pepperoni ($PPR) - She's into Crypto</title>
-    <meta name="description" content="Official page for Pepperoni ($PPR) - Her first coin. Get information and resources about our token.">
+    <meta name="description" content="Official page for Pepperoni ($PPR) - The hottest new meme coin! Join the community now.">
     
     <!-- Favicon -->
     <link rel="icon" href="icon-small.png" type="image/png">
     
     <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="Pepperoni ($PPR) - Pepper's first coin">
-    <meta property="og:description" content="Official page for Pepperoni ($PPR) - Her first coin. Join the community now!">
-    <meta property="og:image" content="https://pepperoni-corgi.github.io/ppr-coin/icons/icon-large.png">
-    <meta property="og:url" content="https://pepperoni-corgi.github.io/ppr-coin/icons/">
+    <meta property="og:title" content="Pepperoni ($PPR) - The Next Big Meme Coin">
+    <meta property="og:description" content="Join the Pepperoni ($PPR) community today and ride the crypto wave!"><meta property="og:image" content="https://pepperoni-corgi.github.io/ppr-coin/icons/icon-large.png">
+    <meta property="og:url" content="https://pepperoni-corgi.github.io/ppr-coin/">
     <meta property="og:type" content="website">
     
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Pepperoni ($PPR) - The Next Big Meme Coin">
-    <meta name="twitter:description" content="Official page for Pepperoni ($PPR) - The next generation meme coin. Join the community now!">
+    <meta name="twitter:description" content="Official page for Pepperoni ($PPR) - Join the revolution now!">
     <meta name="twitter:image" content="https://pepperoni-corgi.github.io/ppr-coin/icons/icon-large.png">
+    
+    <!-- Styles -->
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
             text-align: center;
-            background-color: #f9f9f9;
+            background: linear-gradient(to bottom, #3a0ca3, #4361ee);
+            color: white;
         }
         h1 {
-            color: #333;
+            font-size: 3rem;
         }
-        .icon-container {
-            margin: 40px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
+        .hero {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
         }
-        .icon-box {
-            background-color: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 600px;
-        }
-        .icon-title {
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #555;
-        }
-        .icon-links {
-            margin-top: 15px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        .icon-links a {
+        .btn {
             display: inline-block;
-            background-color: #0366d6;
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            font-weight: bold;
             color: white;
-            padding: 8px 16px;
-            border-radius: 4px;
+            background: #f6851b;
+            border-radius: 30px;
             text-decoration: none;
-            font-size: 14px;
+            transition: 0.3s;
         }
-        .icon-links a:hover {
-            background-color: #0250a0;
+        .btn:hover {
+            background: #ff9800;
+        }
+        .container {
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        footer {
+            margin-top: 40px;
+            opacity: 0.8;
         }
     </style>
+    
+    <!-- JavaScript for MetaMask -->
     <script>
         async function addToMetaMask() {
             if (typeof window.ethereum !== 'undefined') {
                 try {
-                    // Request account access
                     await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    
-                    // Add token to MetaMask
-                    const tokenAddress = '0x1234567890abcdef1234567890abcdef12345678';
-                    const tokenSymbol = 'PPR';
-                    const tokenDecimals = 18;
-                    const tokenImage = window.location.origin + '/icon-small.png';
-                    
-                    try {
-                        // wasAdded is a boolean. Like any RPC method, an error may be thrown.
-                        const wasAdded = await window.ethereum.request({
-                            method: 'wallet_watchAsset',
-                            params: {
-                                type: 'ERC20',
-                                options: {
-                                    address: tokenAddress,
-                                    symbol: tokenSymbol,
-                                    decimals: tokenDecimals,
-                                    image: tokenImage,
-                                },
+                    const wasAdded = await window.ethereum.request({
+                        method: 'wallet_watchAsset',
+                        params: {
+                            type: 'ERC20',
+                            options: {
+                                address: '0x1234567890abcdef1234567890abcdef12345678',
+                                symbol: 'PPR',
+                                decimals: 18,
+                                image: window.location.origin + '/icon-small.png',
                             },
-                        });
-                        
-                        if (wasAdded) {
-                            alert('Token was added to your wallet!');
-                        } else {
-                            alert('Token was not added to your wallet.');
-                        }
-                    } catch (error) {
-                        console.log(error);
-                        alert('There was an error adding the token to your wallet.');
-                    }
+                        },
+                    });
+                    alert(wasAdded ? 'Token added to wallet!' : 'Token addition canceled.');
                 } catch (error) {
-                    console.log(error);
-                    alert('Please connect to MetaMask to add this token.');
+                    alert('Error: ' + error.message);
                 }
             } else {
-                alert('MetaMask is not installed. Please install MetaMask and try again.');
+                alert('MetaMask is not installed. Please install it and try again.');
             }
         }
     </script>
 </head>
 <body>
-    <!-- Main Hero Banner -->
-    <div style="padding: 30px 0; background: linear-gradient(135deg, #3a0ca3 0%, #4361ee 100%); border-radius: 12px; margin-bottom: 30px; position: relative; overflow: hidden;">
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><circle cx=\"10\" cy=\"10\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"30\" cy=\"10\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"50\" cy=\"10\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"70\" cy=\"10\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"90\" cy=\"10\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"10\" cy=\"30\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"30\" cy=\"30\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"50\" cy=\"30\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"70\" cy=\"30\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"90\" cy=\"30\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"10\" cy=\"50\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"30\" cy=\"50\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"50\" cy=\"50\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"70\" cy=\"50\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"90\" cy=\"50\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"10\" cy=\"70\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"30\" cy=\"70\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"50\" cy=\"70\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"70\" cy=\"70\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"90\" cy=\"70\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"10\" cy=\"90\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"30\" cy=\"90\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"50\" cy=\"90\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"70\" cy=\"90\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"90\" cy=\"90\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/></svg>'); opacity: 0.7;"></div>
-        
-        <div style="position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
-            <div>
-                <img src="icon-large.png" alt="Pepperoni Hero Logo" style="width: 180px; height: 180px; border-radius: 50%; border: 8px solid rgba(255,255,255,0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.2);">
-            </div>
-            <div style="color: white; text-align: left; max-width: 400px;">
-                <h1 style="margin: 0; font-size: 2.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Pepperoni</h1>
-                <p style="font-size: 1.2rem; margin: 10px 0 20px; opacity: 0.9;">To the moon and beyond! 🚀</p>
-                <div>
-                    <a href="#add-to-wallet" onclick="addToMetaMask()" style="display: inline-block; background-color: #f6851b; color: white; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-right: 10px;">Add to MetaMask</a>
-                    <a href="https://app.uniswap.org/#/swap?outputCurrency=0x1234567890abcdef1234567890abcdef12345678" target="_blank" style="display: inline-block; background-color: white; color: #3a0ca3; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: bold;">Buy Now</a>
-                </div>
-            </div>
+    <div class="hero">
+        <h1>Pepperoni ($PPR)</h1>
+        <p>The meme coin that's taking over!</p>
+        <img src="icon-large.png" alt="Pepperoni Logo" width="150" style="border-radius: 50%;">
+        <div>
+            <a href="#" onclick="addToMetaMask()" class="btn">Add to MetaMask</a>
+            <a href="https://app.uniswap.org/#/swap?outputCurrency=0x1234567890abcdef1234567890abcdef12345678" target="_blank" class="btn" style="background: white; color: #3a0ca3;">Buy on Uniswap</a>
         </div>
     </div>
     
-    <div class="icon-container">
-        <h3 style="margin-bottom: 20px; color: #3a0ca3;">Official Token Icons</h3>
-        
-        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-            <div class="icon-box">
-                <div class="icon-title">Large Icon (512px)</div>
-                <div style="background-color: #f8f9fa; border-radius: 8px; padding: 20px; display: flex; justify-content: center; align-items: center; margin: 10px 0; height: 300px;">
-                    <img src="icon-large.png" alt="Large Meme Coin Icon" style="max-width: 250px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));">
-                </div>
-                <div class="icon-links">
-                    <a href="icon-large.png" download>Download PNG</a>
-                    <a href="https://pepperoni-corgi.github.io/ppr-coin/icons/icon-large.png">Direct Link</a>
-                </div>
-            </div>
-            
-            <div class="icon-box">
-                <div class="icon-title">Small Icon (64px)</div>
-                <div style="background-color: #f8f9fa; border-radius: 8px; padding: 20px; display: flex; justify-content: center; align-items: center; margin: 10px 0; height: 300px;">
-                    <div style="background: repeating-conic-gradient(#f1f1f1 0% 25%, #fcfcfc 0% 50%) 50% / 20px 20px;">
-                        <img src="icon-small.png" alt="Small Meme Coin Icon" style="max-width: 64px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));">
-                    </div>
-                </div>
-                <div class="icon-links">
-                    <a href="icon-small.png" download>Download PNG</a>
-                    <a href="https://pepperoni-corgi.github.io/ppr-coin/icons/icon-small.png">Direct Link</a>
-                </div>
-            </div>
-        </div>
+    <div class="container">
+        <h2>Token Details</h2>
+        <p><strong>Network:</strong> Ethereum</p>
+        <p><strong>Contract Address:</strong> 0x1234567890abcdef1234567890abcdef12345678</p>
+        <p><strong>Symbol:</strong> PPR</p>
+        <p><strong>Decimals:</strong> 18</p>
     </div>
     
-    <div style="margin: 40px 0; background-color: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 600px; margin-left: auto; margin-right: auto;">
-        <!-- Hero Image Section -->
-        <div style="margin-bottom: 20px;">
-            <img src="icon-large.png" alt="Pepperoni Logo" style="width: 150px; height: 150px; border-radius: 50%; border: 5px solid #f3f3f3; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-        </div>
-        <h2>Pepperoni ($PPR)</h2>
-        <p>The next big meme coin in the crypto space!</p>
-        
-        <div style="margin: 20px 0; text-align: left; background-color: #f5f5f5; padding: 15px; border-radius: 8px; font-family: monospace;">
-            <div><strong>Network:</strong> Ethereum (or your blockchain)</div>
-            <div><strong>Contract Address:</strong> 0x1234567890abcdef1234567890abcdef12345678</div>
-            <div><strong>Token Symbol:</strong> $PPR</div>
-            <div><strong>Decimals:</strong> 18</div>
-        </div>
-        
-        <div class="icon-links" style="margin-top: 20px;">
-            <a href="https://etherscan.io/token/0x1234567890abcdef1234567890abcdef12345678" target="_blank">View on Etherscan</a>
-            <a href="https://app.uniswap.org/#/swap?outputCurrency=0x1234567890abcdef1234567890abcdef12345678" target="_blank">Trade on Uniswap</a>
-            <a href="#" onclick="addToMetaMask()" style="background-color: #f6851b;">Add to MetaMask</a>
-        </div>
-    </div>
-    
-    <!-- Community Section -->
-    <div style="margin: 40px 0; background-color: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 600px; margin-left: auto; margin-right: auto;">
+    <div class="container">
         <h2>Join Our Community</h2>
-        <p>Be part of the Pepperoni movement!</p>
-        
-        <div style="display: flex; justify-content: center; margin-top: 20px; gap: 15px;">
-            <!a href="https://pepperoni-corgi.github.io/ppr-coin/icons/" target="_blank" style="text-decoration: none;">
-                <div style="width: 60px; height: 60px; background-color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white">
-                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-                    </svg>
-                </div>
-            </a>
-        </div>
+        <p>Follow us and stay updated!</p>
+        <a href="#" class="btn" style="background: #1da1f2;">Follow on Twitter</a>
+        <a href="#" class="btn" style="background: #ff4500;">Join Reddit</a>
     </div>
     
     <footer>
